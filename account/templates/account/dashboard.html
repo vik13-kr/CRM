@@ -2,6 +2,9 @@
 
 
 {% extends "account/base.html" %}
+{% load static %}
+
+
 
 <!--Block Content -->
 {% block content %}
@@ -15,6 +18,7 @@
                             <div class="card-body text-center text-light">
                               <h5 class="card-title">Total Orders</h5>
                               <hr>
+                              <h4 class=" text-center text-light">{{orders_count}}</h4>
                               <p class="card-text"></p>                              
                             </div>
                     </div>
@@ -22,8 +26,9 @@
             <div class="col-md-3 col-lg-4">
                     <div class="card bg-info" style="width: 20rem;height : 10rem;">
                             <div class="card-body text-center text-light">
-                              <h5 class="card-title">Total Orders</h5>
+                              <h5 class="card-title">Orders Delivered</h5>
                               <hr>
+                              <h4 class=" text-center text-light">{{orders_delivered}}</h4>
                               <p class="card-text"></p>                              
                             </div>
                     </div>
@@ -31,8 +36,9 @@
             <div class="col-md-3 col-lg-4">
                     <div class="card bg-info" style="width: 20rem; height: 10rem;">
                             <div class="card-body text-center text-light">
-                              <h5 class="card-title">Total Orders</h5>
+                              <h5 class="card-title">orders Pending</h5>
                               <hr>
+                                <h4 class=" text-center text-light">{{orders_pending}}</h4>
                               <p class="card-text"></p>                              
                             </div>
                     </div>
@@ -50,22 +56,30 @@
             <div class="col-md-4" >
                 <p class="h3 text-center">Cutomers</p>
                 <hr>
+                <a class="btn btn-success text-white btn-block " href="">Create Customer</a>
                 <table class='table table-hover '>
                     <thead>
+                        <th></th>
                         <th>Customer</th>
                         <th>Phone</th>
                     </thead>
                     <tbody>
+                        {% for customer in customers %}
+                        
                         <tr>
-                            <td>Vik</td>
-                            <td>94411211</td>
-                        </tr>
+                            <td><a href="{{customer.get_absolute_url}}">View</a></td>
+                            <td>{{customer.name}}</td>
+                            <td>{{customer.phone}}</td>
+                        </tr> 
+                                          
+                        {% endfor %}
                     </tbody>
                 </table>
             </div>
             <div class="col-md-8">
                     <p class="h3 text-center">Last 5 Orders</p>
                     <hr>
+                    <a class="btn btn-success text-white btn-block " href="{% url 'create_order' %}">Create Orders</a>
                     <table class='table table-hover '>
                         <thead>
                             <th>Product</th>
@@ -75,9 +89,17 @@
                             <th>Remove</th>
                         </thead>
                         <tbody>
-                            <tr>
-                                
-                            </tr>
+                        {% for order in orders %}
+                        <tr>
+                            <td>{{order.product}}</td>
+                            <td>{{order.date_ordered}}</td>
+                            <td>{{order.status}}</td>
+                            <td><button type="button" class="btn btn-secondary "><a href="{% url 'update_order' order.id %}" class = 'text-white'> Update </a></button></td>
+                            <td><button type="button" class="btn btn-danger "><a href="{% url 'delete_order' order.id %}" class = 'text-white'> Remove </a></button></td>
+
+                        </tr>                    
+                        {% endfor %}
+                            
                         </tbody>
                     </table>
             </div>

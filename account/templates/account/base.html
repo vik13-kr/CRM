@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +10,9 @@
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" 
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
+    {% block static %}
+    <link rel="stylesheet" href='{% static "account/dashboard.css" %}'type ='text/css'>
+    {% endblock static %}
 </head>
 <body>
     <!--Navigation-->
@@ -19,14 +22,16 @@
                 <div class="row">
                     <div class="col">
                             <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
-                                    <a class="navbar-brand" href="#">Navbar</a>
+                                    <a class="navbar-brand" href="{% url 'dashboard' %}">Navbar</a>
                                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                                       <span class="navbar-toggler-icon"></span>
                                     </button>
                                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                                       <div class="navbar-nav">
-                                        <a class="nav-item nav-link active" href="#">Dashboard <span class="sr-only">(current)</span></a>
-                                        <a class="nav-item nav-link" href="#">Products</a>                                        
+                                        <a class="nav-item nav-link active" href="{% url 'dashboard' %}">Dashboard <span class="sr-only">(current)</span></a>
+                                        <a class="nav-item nav-link" href="{% url 'products' %}">Products</a>
+                                         <p class = 'text-light text-right'>Hello, {{request.user}}</p>
+                                         <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>                                       
                                       </div>
                                     </div>
                                   </nav>

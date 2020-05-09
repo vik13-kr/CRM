@@ -1,0 +1,14 @@
+{% block content %}
+
+<form action="" method = 'POST'>
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type= 'Submit' value = 'Submit'> Submit </button>
+
+    {% for message in messages %}
+					<p>{{message}}</p>
+				{% endfor %}	
+
+</form>
+
+{% endblock content %}

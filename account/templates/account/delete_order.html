@@ -1,0 +1,28 @@
+{% extends 'account/base.html' %}
+
+
+{% block content %}
+
+<div class="container-fluid">
+        <div class="row">
+            <div class="col pl-3 ml-3 mt-3">
+                    <form action="" method = 'POST'>
+                            {% csrf_token %}
+                            <div class = 'form-group '>
+
+                                Do you really want to delete this order?<br>
+
+
+                                <a class = 'btn btn-secondary mt-3' href="{% url 'dashboard' %}">Cancel</a>                                               
+                                <button class = 'btn btn-danger mt-3' type="submit" value="submit">Confirm</button>
+                        
+                            </div>  
+                        
+                        </form>
+            </div>
+        </div>
+    </div>
+    
+    
+{% endblock content %}
+    
