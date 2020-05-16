@@ -1,8 +1,7 @@
 # CRM
 Customer Management System
 
-This webapp lets admin manage their customers and orders made by user.
-A Customer can view their profile information and orders made by him.
+A Webapp which helps shop manager to manage orders made by customers.  
 
 # Functionalities
 
