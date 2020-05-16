@@ -1,5 +1,5 @@
-# CRM
-Customer Management System
+
+# Customer Management System
 
 A Webapp which helps shop manager to manage orders made by customers.  
 
