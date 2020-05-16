@@ -1,8 +1,39 @@
-<h1>Register Here</h1>
 
-<form action="" method = 'POST'>
-    {% csrf_token %}
-    {{ form.as_p }}
 
-    <button type = 'submit' value =  'submit'>Submit</button>
-</form>
+{% extends 'account/base_form.html' %}
+
+{% load static %}
+
+{% block static %}
+<link rel="stylesheet" href='{% static "account/form.css" %}' type ='text/css'>
+{% endblock static %}
+
+{% block content %}
+
+<div class="page-wrapper">
+    <div class="form-container container">
+        <div class="row">
+            <div class="form-col col">
+                <p class = 'display-4'>Register Form </p>
+                <form  class = 'form' action = '' method = "POST">
+                    {% csrf_token %}
+                    <div class="form">
+                        {{form.as_p}}
+                    </div>
+                        
+                    <div class="button">
+                                <button type="submit" class="  btn btn-success mb-2">Register</button>
+                                <button type="reset" class="  btn btn-danger mx-3 mb-2">Reset</button>
+                    </div>
+
+                        
+                        
+                      </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

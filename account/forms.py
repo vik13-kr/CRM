@@ -1,10 +1,16 @@
 from django.forms import ModelForm
-from . models import Order
+from . models import Order, Customer
 from django.contrib.auth.models import User
 from django import forms
 from django.core.exceptions import ValidationError
 
 
+
+class CustomerForm(ModelForm):
+    class Meta:
+        model = Customer
+        fields = '__all__'
+        exclude = ['user']
 
 class CreateOrderForm(ModelForm):
     
@@ -59,5 +65,6 @@ class UserRegisterForm(forms.Form):
         return user
 
 class UserLogin(forms.Form):
-    username = forms.CharField(label = 'Username')
+    username = forms.CharField(label = 'Username'
+    )
     password = forms.CharField(label = 'Password', widget = forms.PasswordInput)

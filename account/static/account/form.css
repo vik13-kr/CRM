@@ -1,0 +1,26 @@
+.page-wrapper{
+    background-color: #57595c; 
+    height : 100vh;
+    
+}
+
+.form-col{
+    width: 50%;    
+    margin : 10em 20em;
+    background-color : white;    
+    color : #828487;
+    border : solid black 3px;
+   
+}
+
+.form{
+    
+    margin : 12px;
+    
+}
+.button{
+    text-align: center !important;
+}
+
+
+ 

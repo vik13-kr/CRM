@@ -22,18 +22,28 @@
                 <div class="row">
                     <div class="col">
                             <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
-                                    <a class="navbar-brand" href="{% url 'dashboard' %}">Navbar</a>
+                                    <a class="navbar-brand" href="{% url 'dashboard' %}">Home</a>
                                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                                       <span class="navbar-toggler-icon"></span>
                                     </button>
                                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                                       <div class="navbar-nav">
-                                        <a class="nav-item nav-link active" href="{% url 'dashboard' %}">Dashboard <span class="sr-only">(current)</span></a>
-                                        <a class="nav-item nav-link" href="{% url 'products' %}">Products</a>
-                                         <p class = 'text-light text-right'>Hello, {{request.user}}</p>
-                                         <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>                                       
+                                         {% if request.user.is_staff %} 
+                                            
+                                            <a class="nav-item nav-link active" href="{% url 'dashboard' %}">Dashboard <span class="sr-only">(current)</span></a>
+                                            <a class="nav-item nav-link" href="{% url 'products' %}">Products</a>
+                                         
+                                        {% else %}  
+                                            
+                                            <a class="nav-item nav-link" href="{% url 'setting' %}">Setting</a>
+
+                                        {% endif %}  
+                                         
+                                                                          
                                       </div>
                                     </div>
+                                    <span class = 'text-light hello-msg'> Hello, {{request.user}}</span>
+                                    <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>      
                                   </nav>
                     </div>
                 </div>
